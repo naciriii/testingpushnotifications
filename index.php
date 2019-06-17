@@ -1,7 +1,11 @@
 <?php
-var_dump($_REQUEST);
+
 $data = json_encode($_REQUEST);
 $input = file_get_contents('php://input');
-fle_put_contents('data1.json',$input);
-file_put_contents('data.json',$data);
+echo "\n___ payload json raw___ ". PHP_EOL;
+print($input);
+file_put_contents('payload.json',$input."\n", FILE_APPEND);
+file_put_contents('request.json',$data."\n", FILE_APPEND);
+echo "\n___ payload json parsed__ ". PHP_EOL;
 
+print_r(json_decode($input));
